@@ -4,8 +4,8 @@ const app = express()
 const port = 3000
 
 app.get('/', (req, res) => {
-  const ROOMS = 10
-  const KEYS = 10
+  const ROOMS = req.query["rooms"] || 0;
+  const KEYS = req.query["keys"] || 0;
   const level = new MazeKeyGen({rooms: ROOMS, keys: KEYS});
   const result = level.generate();
   res.send(result)
